@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+.app-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 5rem;
+}
+
+h1 {
+  margin: 5rem;
+  font-size: 5rem;
+  color: hsla(0, 0%, 100%, .8);
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+main > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+button {
+  width: 8rem;
+  height: 8rem;
+  padding: 0;
+  border-radius: 20px;
+  font-size: inherit;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:active {
+  transform: scale(.95);
+}
+
+.decrease-button, .increase-button {
+  background-color: hsla(0, 0%, 100%, .8);
+  color: #242424;
+}
+
+.reset-button {
+  background-color: rgb(117, 6, 6);
+  color: hsla(0, 0%, 100%, .8);
+}
+
+.counter {
+  font-size: 7rem;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(189, 102, 102);
+  font-weight: 600;
+}
