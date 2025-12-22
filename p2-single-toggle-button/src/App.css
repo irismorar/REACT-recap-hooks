@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+.app-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  margin: 5rem;
+  font-size: 5rem;
+  color: hsla(0, 0%, 100%, .8);
+}
+
+button {
+  width: 15rem;
+  height: 15rem;
+  font-size: 5rem;
+  padding: 3rem 5rem;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: inherit;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:active {
+  transform: scale(.95);
+}
+
+div {
+  font-size: 3rem;
+}
