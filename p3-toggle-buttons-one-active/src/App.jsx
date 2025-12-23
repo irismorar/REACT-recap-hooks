@@ -1,5 +1,6 @@
 import "./App.css";
 import { useToggleButtonsOneActive } from "./useToggleButtonsOneActive";
+import { Button } from "./Button";
 
 export default function App() {
   const { activeButton, setActiveButton } = useToggleButtonsOneActive();
@@ -12,22 +13,14 @@ export default function App() {
         </h3>
       </div>
       <section>
-        {["left", "center", "right"].map((button) => {
+        {["left", "center", "right"].map((buttonText) => {
           return (
-            <button
-              key={button}
-              style={{
-                backgroundColor:
-                  activeButton === button
-                    ? "hsla(205, 66%, 33%, 1)"
-                    : "hsla(0, 0%, 100%, .15)",
-                color:
-                  activeButton === button ? "#242424" : "hsla(0, 0%, 100%, .8)",
-              }}
-              onClick={() => setActiveButton(button)}
-            >
-              {button}
-            </button>
+            <Button
+              key={buttonText}
+              activeButtonState={activeButton}
+              onHandleClick={() => setActiveButton(buttonText)}
+              text={buttonText}
+            />
           );
         })}
       </section>
