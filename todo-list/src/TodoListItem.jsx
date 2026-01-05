@@ -1,30 +1,32 @@
 export function TodoListItem({
   todoId,
   todoIsCompleted,
-  handleToggleCompletedTodo,
-  text,
+  handleToggleTodoCompleted,
+  todoText,
   handleDeleteTodo,
+  todoDate,
 }) {
   return (
     <li>
-      <div>
-        <input
-          type="checkbox"
-          id={todoId}
-          checked={todoIsCompleted}
-          onChange={handleToggleCompletedTodo}
-        />
-        <label
-          htmlFor={todoId}
-          style={{
-            textDecoration: todoIsCompleted ? "line-through" : "none",
-            opacity: todoIsCompleted ? ".5" : "1",
-          }}
-        >
-          {text}
-        </label>
-      </div>
-      <button onClick={handleDeleteTodo}>❌</button>
+      <input
+        type="checkbox"
+        id={todoId}
+        checked={todoIsCompleted}
+        onChange={handleToggleTodoCompleted}
+      />
+      <label
+        htmlFor={todoId}
+        style={{
+          textDecoration: todoIsCompleted ? "line-through" : "none",
+          opacity: todoIsCompleted ? ".4" : "1",
+        }}
+      >
+        {todoText}
+      </label>
+      <div className="creation-date"> {todoDate}</div>
+      <button className="delete-todo-button" onClick={handleDeleteTodo}>
+        ❌
+      </button>
     </li>
   );
 }

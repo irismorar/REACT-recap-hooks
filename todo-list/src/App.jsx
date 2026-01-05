@@ -1,23 +1,23 @@
 import "./App.css";
-import { useTodos } from "./useTodos";
 import { TodoInput } from "./TodoInput";
 import { TodoListItem } from "./TodoListItem";
+import { useTodos } from "./useTodos";
 
 export default function App() {
   const {
-    userInput,
     todos,
-    filter,
+    userInput,
     filteredTodos,
     itemsLeft,
+    filter,
     changeUserInput,
-    createTodo,
+    addTodo,
     deleteTodo,
-    toggleCompletedTodo,
-    clearCompletedTodos,
+    toggleTodoCompleted,
     setFilterAll,
     setFilterActive,
     setFilterCompleted,
+    clearCompletedTodos,
   } = useTodos();
 
   return (
@@ -25,8 +25,8 @@ export default function App() {
       <header>
         <h1>TODOS</h1>
         <TodoInput
-          userInput={userInput}
-          handleCreateTodo={createTodo}
+          textInput={userInput}
+          handleAddTodo={addTodo}
           handleChangeUserInput={(event) => {
             changeUserInput(event.target.value);
           }}
@@ -39,19 +39,23 @@ export default function App() {
               <TodoListItem
                 key={todo.id}
                 todoId={todo.id}
-                todoIsCompleted={todo.completed}
-                handleToggleCompletedTodo={() => toggleCompletedTodo(todo)}
-                text={todo.text}
-                handleDeleteTodo={() => deleteTodo(todo)}
+                todoIsCompleted={todo.isCompleted}
+                handleToggleTodoCompleted={() => {
+                  toggleTodoCompleted(todo);
+                }}
+                todoText={todo.text}
+                handleDeleteTodo={() => {
+                  deleteTodo(todo);
+                }}
+                todoDate={todo.date}
               />
             );
           })}
         </ul>
-
         {!!todos.length && (
           <footer>
             <section className="remaining-todos-container">
-              {itemsLeft} {itemsLeft <= 1 ? " item" : " items"} left
+              {itemsLeft} {itemsLeft > 1 ? "items" : "item"} left
             </section>
             <section className="filters-container">
               <button

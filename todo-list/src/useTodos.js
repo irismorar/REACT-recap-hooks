@@ -3,55 +3,51 @@ import { useCallback, useState } from "react";
 export function useTodos() {
   const [userInput, setUserInput] = useState("");
   const [todos, setTodos] = useState([]);
-  const [filter, setFilter] = useState("all"); // "active" , "completed"
+  const [filter, setFilter] = useState("all"); // "active" | "completed"
+  const [isEditingTodoId, setIsEditingTodoId] = useState(null);
 
-  const changeUserInput = useCallback((text) => {
-    setUserInput(text);
+  const changeUserInput = useCallback((newText) => {
+    setUserInput(newText);
   }, []);
 
-  const createTodo = useCallback(() => {
+  const addTodo = useCallback(() => {
     if (userInput === "") {
       return;
     }
-    const afterCreatingNewTodo = [
+    const afterAddingTodo = [
       ...todos,
-      { id: crypto.randomUUID(), text: userInput, completed: false },
+      {
+        id: crypto.randomUUID(),
+        text: userInput.trim(),
+        isCompleted: false,
+        date: new Date().toLocaleString(),
+      },
     ];
-    setTodos(afterCreatingNewTodo);
+    setTodos(afterAddingTodo);
     setUserInput("");
-  }, [userInput, todos]);
+  }, [todos, userInput]);
 
   const deleteTodo = useCallback(
     (item) => {
-      const afterDeleteTodo = todos.filter((todo) => {
-        return item.id !== todo.id;
+      const afterDeletingTodo = todos.filter((currentTodo) => {
+        return item.id !== currentTodo.id;
       });
-      setTodos(afterDeleteTodo);
+      setTodos(afterDeletingTodo);
     },
     [todos]
   );
 
-  const toggleCompletedTodo = useCallback(
+  const toggleTodoCompleted = useCallback(
     (item) => {
       const afterToggleTodo = todos.map((todo) => {
         return item.id === todo.id
-          ? {
-              ...todo,
-              completed: !todo.completed,
-            }
+          ? { ...todo, isCompleted: !todo.isCompleted }
           : todo;
       });
       setTodos(afterToggleTodo);
     },
     [todos]
   );
-
-  const clearCompletedTodos = useCallback(() => {
-    const afterClearCompletedTodos = todos.filter((todo) => {
-      return !todo.completed;
-    });
-    setTodos(afterClearCompletedTodos);
-  }, [todos]);
 
   const setFilterAll = useCallback(() => {
     setFilter("all");
@@ -70,30 +66,35 @@ export function useTodos() {
       return true;
     }
     if (filter === "active") {
-      return !todo.completed;
+      return !todo.isCompleted;
     }
     if (filter === "completed") {
-      return todo.completed;
+      return todo.isCompleted;
     }
   });
 
-  const itemsLeft = todos.filter((todo) => {
-    return !todo.completed;
-  }).length;
+  const clearCompletedTodos = useCallback(() => {
+    const afterClearCompleted = todos.filter((todo) => {
+      return !todo.isCompleted;
+    });
+    setTodos(afterClearCompleted);
+  }, [todos]);
+
+  const itemsLeft = todos.filter((todo) => !todo.isCompleted).length;
 
   return {
-    userInput,
     todos,
-    filter,
+    userInput,
     filteredTodos,
     itemsLeft,
+    filter,
     changeUserInput,
-    createTodo,
+    addTodo,
     deleteTodo,
-    toggleCompletedTodo,
-    clearCompletedTodos,
+    toggleTodoCompleted,
     setFilterAll,
     setFilterActive,
     setFilterCompleted,
+    clearCompletedTodos,
   };
 }

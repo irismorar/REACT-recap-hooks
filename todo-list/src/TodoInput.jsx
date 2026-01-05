@@ -1,16 +1,12 @@
-export function TodoInput({
-  userInput,
-  handleCreateTodo,
-  handleChangeUserInput,
-}) {
+export function TodoInput({ textInput, handleAddTodo, handleChangeUserInput }) {
   return (
     <input
       type="text"
       placeholder="What needs to be done?"
-      value={userInput}
+      value={textInput}
       onKeyUp={(event) => {
         if (event.key === "Enter") {
-          handleCreateTodo();
+          handleAddTodo();
         }
       }}
       onChange={handleChangeUserInput}
