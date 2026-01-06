@@ -5,9 +5,28 @@ export function TodoListItem({
   todoText,
   handleDeleteTodo,
   todoDate,
+  handleDoubleClick,
+  isEditingTodo,
+  handleEnterKey,
 }) {
+  if (isEditingTodo) {
+    return (
+      <li>
+        <input
+          type="text"
+          defaultValue={todoText}
+          onKeyUp={(event) => {
+            if (event.key === "Enter") {
+              handleEnterKey(event.target.value);
+            }
+          }}
+        ></input>
+      </li>
+    );
+  }
+
   return (
-    <li>
+    <li onDoubleClick={handleDoubleClick}>
       <input
         type="checkbox"
         id={todoId}

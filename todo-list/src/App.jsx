@@ -10,6 +10,9 @@ export default function App() {
     filteredTodos,
     itemsLeft,
     filter,
+    isEditingTodoId,
+    setIsEditingTodoId,
+    setTodoName,
     changeUserInput,
     addTodo,
     deleteTodo,
@@ -48,6 +51,14 @@ export default function App() {
                   deleteTodo(todo);
                 }}
                 todoDate={todo.date}
+                handleDoubleClick={() => {
+                  setIsEditingTodoId(todo.id);
+                }}
+                isEditingTodo={todo.id === isEditingTodoId}
+                handleEnterKey={(newName) => {
+                  setTodoName(todo.id, newName);
+                  setIsEditingTodoId(null);
+                }}
               />
             );
           })}

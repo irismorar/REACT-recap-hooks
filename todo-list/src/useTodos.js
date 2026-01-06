@@ -27,6 +27,21 @@ export function useTodos() {
     setUserInput("");
   }, [todos, userInput]);
 
+  const setTodoName = useCallback(
+    (id, newText) => {
+      const afterEditingTodo = todos.map((todo) => {
+        return id === todo.id
+          ? {
+              ...todo,
+              text: newText,
+            }
+          : todo;
+      });
+      setTodos(afterEditingTodo);
+    },
+    [todos]
+  );
+
   const deleteTodo = useCallback(
     (item) => {
       const afterDeletingTodo = todos.filter((currentTodo) => {
@@ -88,6 +103,9 @@ export function useTodos() {
     filteredTodos,
     itemsLeft,
     filter,
+    isEditingTodoId,
+    setIsEditingTodoId,
+    setTodoName,
     changeUserInput,
     addTodo,
     deleteTodo,
