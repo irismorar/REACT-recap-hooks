@@ -1,7 +1,7 @@
-export function Circle({ x, y, handleClick }) {
+export function Shape({ type, x, y, handleClick }) {
   return (
     <div
-      className="circle"
+      className={type}
       style={{ left: `${x}px`, top: `${y}px` }}
       onClick={handleClick}
     ></div>

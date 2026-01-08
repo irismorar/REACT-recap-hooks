@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Kablammo&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -12,15 +14,7 @@ body {
   background-color: hsla(218, 50%, 31%, 1);
   overflow: hidden;
   cursor: none;
-}
-
-.circle {
-  position: absolute;
-  width: 5rem;
-  height: 5rem;
-  background-color: hsla(188, 50%, 31%, 1);
-  border: 2.5px solid hsla(256, 86%, 70%, 1);
-  border-radius: 50%;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .cursor {
@@ -31,7 +25,71 @@ body {
   left: 0;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  z-index: 100;
+  z-index: 2;
   border-radius: 50%;
   background-color:hsla(47, 80%, 49%,1);
+}
+
+.alert-box {
+  width: 100%;
+  font-size: 8rem;
+  text-transform: uppercase;
+  text-align: center;
+  background-color: hsla(30, 80%, 49%, 0.7);
+  color:hsla(0, 71%, 35%, 1);
+  z-index: 3;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: .5rem;
+  font-family: "Kablammo", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "MORF" 0;
+}
+
+.score {
+  top: 0;
+  left: 3rem;
+  font-size: 8rem;
+  position: fixed;
+  letter-spacing: .5rem;
+  font-family: "Kablammo", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "MORF" 0;
+  color: hsla(63, 35%, 64%, 0.75);
+}
+
+/*----------shapes-----------*/
+
+.circle {
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  background-color: hsla(188, 44%, 35%, 1);
+  border: 4px solid hsla(256, 74%, 64%, 1);
+  border-radius: 50%;
+}
+
+.square {
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  background-color: hsla(189, 45%, 50%, 1);
+  border: 4px solid hsla(256, 74%, 64%, 1);
+}
+
+.diamond {
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  background-color: hsla(189, 50%, 27%, 1);
+  border: 4px solid hsla(256, 74%, 64%, 1);
+  transform: rotate(45deg);
 }
