@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kablammo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Henny+Penny&family=Kablammo&display=swap');
 
 * {
   box-sizing: border-box;
@@ -14,7 +15,6 @@ body {
   background-color: hsla(218, 50%, 31%, 1);
   overflow: hidden;
   cursor: none;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .cursor {
@@ -27,16 +27,16 @@ body {
   transform: translate(-50%, -50%);
   z-index: 2;
   border-radius: 50%;
-  background-color:hsla(47, 80%, 49%,1);
+  background-color: hsla(47, 80%, 49%, 1);
 }
 
-.alert-box {
+.pause-box {
   width: 100%;
   font-size: 8rem;
   text-transform: uppercase;
   text-align: center;
   background-color: hsla(30, 80%, 49%, 0.7);
-  color:hsla(0, 71%, 35%, 1);
+  color: hsla(0, 71%, 35%, 1);
   z-index: 3;
   position: fixed;
   top: 50%;
@@ -51,9 +51,14 @@ body {
     "MORF" 0;
 }
 
-.score {
+.score-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 0;
-  left: 3rem;
+  left: 0;
+  width: 50rem;
+  height: 15rem;
   font-size: 8rem;
   position: fixed;
   letter-spacing: .5rem;
@@ -64,6 +69,69 @@ body {
   font-variation-settings:
     "MORF" 0;
   color: hsla(63, 35%, 64%, 0.75);
+}
+
+.tutorial-box {
+  width: 80rem;
+  height: 60rem;
+  padding: 2rem 3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color:hsla(30, 80%, 49%, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 3rem;
+  font-family: "Henny Penny", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "MORF" 0;
+  color: #222;
+}
+
+.tutorial-box > div {
+  font-size: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  font-size: 2rem;
+  background-color: transparent;
+  font-family: inherit;
+  color: inherit;
+  padding: .5rem 1.5rem;
+  background-color: hsla(47, 80%, 49%, 1);
+  border-color: #222;
+}
+
+.tutorial-box:hover .cursor {
+  background-color: red;
+}
+
+.congrats-box {
+  width: 100%;
+  text-align: center;
+  font-size: 10rem;
+  padding: 2rem 3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color:hsla(30, 80%, 49%, 0.7);
+  font-family: "Henny Penny", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "MORF" 0;
+  color: #222;
 }
 
 /*----------shapes-----------*/

@@ -5,36 +5,75 @@ import { useRef } from "react";
 
 export default function App() {
   const cursorRef = useRef(null);
-  const { shapes, isPaused, score, removeShape, increaseScoreBy } =
-    useShapes(cursorRef);
+  const scoreRef = useRef(null);
+  const {
+    shapes,
+    isPaused,
+    score,
+    page,
+    setPage,
+    removeShape,
+    increaseScoreBy,
+  } = useShapes(cursorRef, scoreRef);
 
   return (
     <section>
       <div className="cursor" ref={cursorRef}></div>
-      {isPaused && <div className="alert-box">Pause</div>}
-      {shapes.map((shape) => {
-        return (
-          <Shape
-            key={shape.id}
-            type={shape.type}
-            x={shape.x}
-            y={shape.y}
-            handleClick={() => {
-              removeShape(shape.id);
-              if (shape.type === "circle") {
-                increaseScoreBy(3);
-              }
-              if (shape.type === "square") {
-                increaseScoreBy(2);
-              }
-              if (shape.type === "diamond") {
-                increaseScoreBy(1);
-              }
+      {isPaused && <div className="pause-box">Pause</div>}
+      {page === "tutorial" && (
+        <section className="tutorial-box">
+          <div>
+            Hey famous,
+            <br />
+            <br />
+            In order to beat the Master Machine you need to do the following:
+            <br />
+            1. Have a score higher than 200
+            <br />
+            2. Have less than 20 shapes on the screen.
+            <br /> <br /> Crack on!
+          </div>
+          <button
+            onClick={() => {
+              setPage("play");
             }}
-          />
-        );
-      })}
-      <div className="score">Score: {score}</div>
+          >
+            Start game
+          </button>
+        </section>
+      )}
+      {page === "play" && (
+        <>
+          {shapes.map((shape) => {
+            return (
+              <Shape
+                key={shape.id}
+                type={shape.type}
+                x={shape.x}
+                y={shape.y}
+                handleClick={() => {
+                  removeShape(shape.id);
+                  if (shape.type === "circle") {
+                    increaseScoreBy(3);
+                  }
+                  if (shape.type === "square") {
+                    increaseScoreBy(2);
+                  }
+                  if (shape.type === "diamond") {
+                    increaseScoreBy(1);
+                  }
+                }}
+              />
+            );
+          })}
+          <div className="score-box" ref={scoreRef}>
+            Score: {score}
+          </div>
+        </>
+      )}
+      {page === "win" && (
+        <section className="congrats-box">Not the best but congrats!</section>
+      )}
     </section>
   );
 }

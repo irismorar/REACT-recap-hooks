@@ -1,27 +1,32 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createShape } from "./createShape";
 
-export function useShapes(cursorRef) {
+export function useShapes(cursorRef, scoreRef) {
+  const [page, setPage] = useState("tutorial"); // tutorial | play | win
   const [shapes, setShapes] = useState([]);
   const intervalRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(195);
+  // eslint-disable-next-line no-unused-vars
+  const [hasWin, setHasWin] = useState(false);
 
   const removeShape = useCallback(
     (id) => {
-      const afterRemovingShape = shapes.filter((shape) => {
-        return shape.id !== id;
-      });
-      setShapes(afterRemovingShape);
+      if (page === "play") {
+        const afterRemovingShape = shapes.filter((shape) => {
+          return shape.id !== id;
+        });
+        setShapes(afterRemovingShape);
+      }
     },
-    [shapes]
+    [shapes, page]
   );
 
   useEffect(() => {
-    if (!isPaused) {
+    if (!isPaused && page === "play") {
       intervalRef.current = setInterval(() => {
         setShapes((shapes) => {
-          return [...shapes, createShape()];
+          return [...shapes, createShape(scoreRef)];
         });
       }, 500);
     }
@@ -29,7 +34,7 @@ export function useShapes(cursorRef) {
     return () => {
       clearInterval(intervalRef.current);
     };
-  }, [isPaused]);
+  }, [isPaused, scoreRef, page]);
 
   const handleMouseMove = useCallback(
     (event) => {
@@ -69,16 +74,31 @@ export function useShapes(cursorRef) {
     };
   }, [handleKeyUp]);
 
-  const increaseScoreBy = useCallback((value) => {
-    setScore((prevScore) => {
-      return prevScore + value;
-    });
-  }, []);
+  const increaseScoreBy = useCallback(
+    (value) => {
+      if (page === "play") {
+        setScore((prevScore) => {
+          return prevScore + value;
+        });
+      }
+    },
+    [page]
+  );
+
+  // eslint-disable-next-line no-unused-vars
+  const hasPlayerWin = useCallback(() => {
+    if (score >= 200 && shapes.length <= 20) {
+      setHasWin(true);
+      setPage("win");
+    }
+  }, [score, shapes]);
 
   return {
     shapes,
     isPaused,
     score,
+    page,
+    setPage,
     removeShape,
     increaseScoreBy,
   };
