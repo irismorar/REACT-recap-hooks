@@ -4,11 +4,11 @@ import { createShape } from "./createShape";
 export function useShapes(cursorRef, scoreRef) {
   const [page, setPage] = useState("tutorial"); // tutorial | play | win
   const [shapes, setShapes] = useState([]);
-  const intervalRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
   const [score, setScore] = useState(195);
   // eslint-disable-next-line no-unused-vars
-  const [hasWin, setHasWin] = useState(false);
+  const [hasWon, setHasWon] = useState(false);
+  const intervalRef = useRef(null);
 
   const removeShape = useCallback(
     (id) => {
@@ -84,14 +84,6 @@ export function useShapes(cursorRef, scoreRef) {
     },
     [page]
   );
-
-  // eslint-disable-next-line no-unused-vars
-  const hasPlayerWin = useCallback(() => {
-    if (score >= 200 && shapes.length <= 20) {
-      setHasWin(true);
-      setPage("win");
-    }
-  }, [score, shapes]);
 
   return {
     shapes,
