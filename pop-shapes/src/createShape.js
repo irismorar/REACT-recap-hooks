@@ -4,27 +4,31 @@ const shapeScoreValues = {
   diamond: 1,
 };
 
+const SHAPE_TYPES = ["circle", "square", "diamond"];
+
 export function createShape(scoreRef) {
-  const shapes = ["circle", "square", "diamond"];
+  const type =
+    SHAPE_TYPES[Math.ceil((Math.random() || 0.1) * SHAPE_TYPES.length) - 1];
 
-  const posX = Math.random() * (window.innerWidth - 80);
-  const posY = Math.random() * (window.innerHeight - 80);
+  const scoreWidth = scoreRef.current.offsetWidth;
+  const scoreHeight = scoreRef.current.offsetHeight;
+  let x = Math.random() * (window.innerWidth - 80);
+  let y = Math.random() * (window.innerHeight - 80);
 
-  const scorePos = scoreRef.current.getBoundingClientRect();
-
-  const type = shapes[Math.ceil((Math.random() || 0.1) * shapes.length) - 1];
-
-  if (isOutsideTheBox(posX, posY, scorePos)) {
-    return {
-      id: crypto.randomUUID(),
-      type,
-      x: posX,
-      y: posY,
-      scoreValue: shapeScoreValues[type],
-    };
+  while (!isOutsideTheBox(x, y, scoreWidth, scoreHeight)) {
+    x = Math.random() * (window.innerWidth - 80);
+    y = Math.random() * (window.innerHeight - 80);
   }
+
+  return {
+    id: crypto.randomUUID(),
+    type,
+    x,
+    y,
+    scoreValue: shapeScoreValues[type],
+  };
 }
 
-function isOutsideTheBox(shapePosX, shapePosY, scoreBoxPos) {
-  return shapePosX > scoreBoxPos.right || shapePosY > scoreBoxPos.bottom;
+function isOutsideTheBox(shapePosX, shapePosY, scoreWidth, scoreHeight) {
+  return shapePosX > scoreWidth || shapePosY > scoreHeight;
 }

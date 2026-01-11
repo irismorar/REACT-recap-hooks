@@ -1,13 +1,11 @@
 import "./App.css";
-import { useShapes } from "./useShapes";
+import { useGame } from "./useGame";
 import { Shape } from "./Shape";
-import { useRef } from "react";
 import { useCursor } from "./useCursor";
 
 export default function App() {
-  const scoreRef = useRef(null);
-  const { shapes, isPaused, score, page, setPage, handleClickShape } =
-    useShapes(scoreRef);
+  const { scoreElementRef, shapes, isPaused, score, page, setPage, popShape } =
+    useGame();
 
   const {
     cursorElementRef,
@@ -25,44 +23,33 @@ export default function App() {
       {isPaused && <div className="pause-box">Pause</div>}
       {page === "tutorial" && (
         <section className="tutorial-box">
+          <h1>Hey, famous!</h1>
+          In order to beat the Master Machine you need to do the following:
+          <br />
+          &bull; Have a score higher than 200
+          <br />
+          &bull; Have less than 20 shapes on the screen.
+          <br /> <br /> Crack on!
           <div>
-            Hey famous,
-            <br />
-            <br />
-            In order to beat the Master Machine you need to do the following:
-            <br />
-            1. Have a score higher than 200
-            <br />
-            2. Have less than 20 shapes on the screen.
-            <br /> <br /> Crack on!
+            <button
+              onClick={() => {
+                setPage("play");
+                unhighlightCursor();
+              }}
+              onMouseEnter={highlightCursor}
+              onMouseLeave={unhighlightCursor}
+            >
+              Start game
+            </button>
           </div>
-          <button
-            onClick={() => {
-              setPage("play");
-            }}
-            onMouseEnter={highlightCursor}
-            onMouseLeave={unhighlightCursor}
-          >
-            Start game
-          </button>
         </section>
       )}
       {page === "play" && (
         <>
           {shapes.map((shape) => {
-            return (
-              <Shape
-                key={shape.id}
-                type={shape.type}
-                x={shape.x}
-                y={shape.y}
-                handleClick={() => {
-                  handleClickShape(shape);
-                }}
-              />
-            );
+            return <Shape key={shape.id} shape={shape} onPopShape={popShape} />;
           })}
-          <div className="score-box" ref={scoreRef}>
+          <div className="score-box" ref={scoreElementRef}>
             Score: {score}
           </div>
         </>

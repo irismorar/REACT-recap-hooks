@@ -1,9 +1,9 @@
-export function Shape({ type, x, y, handleClick }) {
+export function Shape({ shape, onPopShape }) {
   return (
     <div
-      className={type}
-      style={{ left: `${x}px`, top: `${y}px` }}
-      onClick={handleClick}
+      className={shape.type}
+      style={{ left: `${shape.x}px`, top: `${shape.y}px` }}
+      onClick={() => onPopShape(shape)}
     ></div>
   );
 }

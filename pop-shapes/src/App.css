@@ -74,32 +74,35 @@ body {
 }
 
 .tutorial-box {
-  width: 80rem;
-  height: 60rem;
-  padding: 2rem 3rem;
+  width: clamp(40rem, 70%, 80rem);
+  height: clamp(40rem, 80vh, 80vh);
+  padding: 2rem 5rem;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: hsla(30, 80%, 49%, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  gap: 3rem;
   font-family: "Henny Penny", system-ui;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  font-size: 3rem;
+  line-height: 1.75em;
   font-variation-settings: "MORF" 0;
   color: #222;
+  overflow-y: auto;
 }
 
-.tutorial-box > div {
-  font-size: 4rem;
+.tutorial-box h1 {
+  font-size: 6rem;
+  line-height: 1.5em;
+  margin-bottom: 1em;
+}
+
+.tutorial-box div {
   display: flex;
-  align-items: center;
   justify-content: center;
+  margin: 2rem 0;
 }
 
 button {
@@ -117,7 +120,7 @@ button {
   width: 100%;
   text-align: center;
   font-size: 10rem;
-  padding: 2rem 3rem;
+  padding: 4rem 3rem;
   position: absolute;
   top: 50%;
   left: 50%;
