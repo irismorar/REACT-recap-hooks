@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Kablammo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Henny+Penny&family=Kablammo&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kablammo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Henny+Penny&family=Kablammo&display=swap");
 
 * {
   box-sizing: border-box;
@@ -30,6 +30,10 @@ body {
   background-color: hsla(47, 80%, 49%, 1);
 }
 
+.cursor.highlight {
+  background-color: hsla(0, 80%, 49%, 1);
+}
+
 .pause-box {
   width: 100%;
   font-size: 8rem;
@@ -42,13 +46,12 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  letter-spacing: .5rem;
+  letter-spacing: 0.5rem;
   font-family: "Kablammo", system-ui;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-variation-settings:
-    "MORF" 0;
+  font-variation-settings: "MORF" 0;
 }
 
 .score-box {
@@ -61,13 +64,12 @@ body {
   height: 15rem;
   font-size: 8rem;
   position: fixed;
-  letter-spacing: .5rem;
+  letter-spacing: 0.5rem;
   font-family: "Kablammo", system-ui;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-variation-settings:
-    "MORF" 0;
+  font-variation-settings: "MORF" 0;
   color: hsla(63, 35%, 64%, 0.75);
 }
 
@@ -79,7 +81,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color:hsla(30, 80%, 49%, 0.7);
+  background-color: hsla(30, 80%, 49%, 0.7);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -89,8 +91,7 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-variation-settings:
-    "MORF" 0;
+  font-variation-settings: "MORF" 0;
   color: #222;
 }
 
@@ -106,13 +107,10 @@ button {
   background-color: transparent;
   font-family: inherit;
   color: inherit;
-  padding: .5rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   background-color: hsla(47, 80%, 49%, 1);
   border-color: #222;
-}
-
-.tutorial-box:hover .cursor {
-  background-color: red;
+  cursor: inherit;
 }
 
 .congrats-box {
@@ -124,13 +122,12 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color:hsla(30, 80%, 49%, 0.7);
+  background-color: hsla(30, 80%, 49%, 0.7);
   font-family: "Henny Penny", system-ui;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-variation-settings:
-    "MORF" 0;
+  font-variation-settings: "MORF" 0;
   color: #222;
 }
 

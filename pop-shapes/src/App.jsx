@@ -2,23 +2,26 @@ import "./App.css";
 import { useShapes } from "./useShapes";
 import { Shape } from "./Shape";
 import { useRef } from "react";
+import { useCursor } from "./useCursor";
 
 export default function App() {
-  const cursorRef = useRef(null);
   const scoreRef = useRef(null);
+  const { shapes, isPaused, score, page, setPage, handleClickShape } =
+    useShapes(scoreRef);
+
   const {
-    shapes,
-    isPaused,
-    score,
-    page,
-    setPage,
-    removeShape,
-    increaseScoreBy,
-  } = useShapes(cursorRef, scoreRef);
+    cursorElementRef,
+    isCursorHighlighted,
+    highlightCursor,
+    unhighlightCursor,
+  } = useCursor(isPaused);
 
   return (
     <section>
-      <div className="cursor" ref={cursorRef}></div>
+      <div
+        className={`cursor${isCursorHighlighted ? " highlight" : ""}`}
+        ref={cursorElementRef}
+      ></div>
       {isPaused && <div className="pause-box">Pause</div>}
       {page === "tutorial" && (
         <section className="tutorial-box">
@@ -37,6 +40,8 @@ export default function App() {
             onClick={() => {
               setPage("play");
             }}
+            onMouseEnter={highlightCursor}
+            onMouseLeave={unhighlightCursor}
           >
             Start game
           </button>
@@ -52,16 +57,7 @@ export default function App() {
                 x={shape.x}
                 y={shape.y}
                 handleClick={() => {
-                  removeShape(shape.id);
-                  if (shape.type === "circle") {
-                    increaseScoreBy(3);
-                  }
-                  if (shape.type === "square") {
-                    increaseScoreBy(2);
-                  }
-                  if (shape.type === "diamond") {
-                    increaseScoreBy(1);
-                  }
+                  handleClickShape(shape);
                 }}
               />
             );

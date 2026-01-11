@@ -1,3 +1,9 @@
+const shapeScoreValues = {
+  circle: 3,
+  square: 2,
+  diamond: 1,
+};
+
 export function createShape(scoreRef) {
   const shapes = ["circle", "square", "diamond"];
 
@@ -6,12 +12,15 @@ export function createShape(scoreRef) {
 
   const scorePos = scoreRef.current.getBoundingClientRect();
 
+  const type = shapes[Math.ceil((Math.random() || 0.1) * shapes.length) - 1];
+
   if (isOutsideTheBox(posX, posY, scorePos)) {
     return {
       id: crypto.randomUUID(),
-      type: shapes[Math.ceil((Math.random() || 0.1) * shapes.length) - 1],
+      type,
       x: posX,
       y: posY,
+      scoreValue: shapeScoreValues[type],
     };
   }
 }
