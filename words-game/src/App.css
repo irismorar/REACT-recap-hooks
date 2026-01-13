@@ -6,17 +6,21 @@
 
 body {
   margin: 0;
+  font-size: 2rem;
 }
 
-.text {
-  margin: 0 auto;
-  font-size: 2rem;
-  color: #666;
-  width: clamp(40rem, 40%, 100rem);
+.game-container {
   font-family: "Modern Antiqua", serif;
   font-weight: 400;
   font-style: normal;
   padding: 5rem 0;
+}
+
+.text {
+  margin: 0 auto;
+  width: clamp(40rem, 40%, 100rem);
+  font-size: 2rem;
+  color: #666;
 }
 
 .text > h1 {

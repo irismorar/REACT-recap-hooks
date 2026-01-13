@@ -29,7 +29,7 @@ export function Tutorial() {
           preț, iar recompensele acumulate vor fi sacrificate.
         </p>
         <p>
-          Scopul tău este să rezolvi cât mai bine toate cele 212 cuvinte, să
+          Scopul tău este să rezolvi cât mai bine cele 200 de cuvinte, să
           acumulezi suficiente recompense și să ajungi, în cele din urmă, la
           scrisoarea completă. Doar un mesaj reconstruit cu înțelepciune va
           putea dezvalui secretul care ține Pământul în viață. Soarta lumii stă
