@@ -29,7 +29,7 @@ export function Tutorial() {
           preț, iar recompensele acumulate vor fi sacrificate.
         </p>
         <p>
-          Scopul tău este să rezolvi cât mai bine cele 200 de cuvinte, să
+          Scopul tău este să rezolvi cât mai bine cele 170 de cuvinte, să
           acumulezi suficiente recompense și să ajungi, în cele din urmă, la
           scrisoarea completă. Doar un mesaj reconstruit cu înțelepciune va
           putea dezvalui secretul care ține Pământul în viață. Soarta lumii stă
@@ -39,6 +39,13 @@ export function Tutorial() {
         </p>
         <p>Tărâmul te așteaptă. Literele s-au trezit. Clepsidra a pornit. </p>
         <p>Povestea începe acum!</p>
+        <div className="tutorial-escape">
+          <span>R</span>
+          <span>E</span>
+          <span>T</span>
+          <span>E</span>
+          <span>N</span>
+        </div>
       </div>
     </section>
   );

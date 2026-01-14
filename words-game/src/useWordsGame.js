@@ -30,6 +30,7 @@ const words = [
   "vedea",
   "căzut",
   "secol",
+  "poate",
   "ferit",
   "sânge",
   "mască",
@@ -150,14 +151,14 @@ const words = [
   "grozăvie",
   "judecată",
   "labirint",
-  "asuprire",
+  // "asuprire",
   "deschide",
   "seducție",
-  "supunere",
+  // "supunere",
   "profeție",
   "aplaudat",
   "locuitor",
-  "corupție",
+  // "corupție",
   "victorie",
   "separare",
   "lipicios",
@@ -167,48 +168,54 @@ const words = [
   "guvernare",
   "schimbare",
   "claritate",
-  "permanent",
+  // "permanent",
   "echilibru",
   "dezbinare",
   "pământean",
   "scrisoare",
   "războinic",
   "libertate",
-  "degradare",
-  "discordie",
-  "tulburare",
-  "umanitate",
-  "niciodată",
-  "frumusețe",
-  "promisiune",
-  "compasiune",
-  "conștiință",
-  "impuritate",
-  "infiltrare",
-  "apocalipsă",
-  "rezistență",
-  "avertizare",
-  "sacrificiu",
-  "frământare",
-  "identitate",
-  "manipulare",
-  "justificat",
-  "amenințare",
-  "neglijență",
-  "perversiune",
-  "caracteriza",
-  "transformat",
-  "halucinație",
-  "transformare",
-  "binecuvântare",
+  // "degradare",
+  // "discordie",
+  // "tulburare",
+  // "umanitate",
+  // "niciodată",
+  // "frumusețe",
+  // "promisiune",
+  // "compasiune",
+  // "conștiință",
+  // "impuritate",
+  // "infiltrare",
+  // "apocalipsă",
+  // "rezistență",
+  // "avertizare",
+  // "sacrificiu",
+  // "frământare",
+  // "identitate",
+  // "manipulare",
+  // "justificat",
+  // "amenințare",
+  // "neglijență",
+  // "perversiune",
+  // "caracteriza",
+  // "transformat",
+  // "halucinație",
+  // "transformare",
+  // "binecuvântare",
 ];
 
 export function useWordsGame() {
-  const [page, setPage] = useState("tutorial"); // tutorial | play | win
+  const [page, setPage] = useState("play"); // tutorial | play | win
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [userWord, setUserWord] = useState("");
+  const [wordsLegend, setWordsLegend] = useState([]);
+  const [currentWordRandomised, setCurrentWordRandomised] = useState([]);
+  const [currentWordClickedLetterIndices, setCurrentWordClickedLetterIndices] =
+    useState([]);
 
-  const currentWord = splitWord(words[currentWordIndex]);
+  useEffect(() => {
+    setCurrentWordRandomised(randomizeWordLetters(words[currentWordIndex]));
+  }, [currentWordIndex]);
 
   const handlePressEnter = useCallback(
     (event) => {
@@ -236,9 +243,13 @@ export function useWordsGame() {
         const userWordPlusLetter = userWord + letter;
         if (userWordPlusLetter !== currentWord) {
           setUserWord("");
+          setCurrentWordClickedLetterIndices([]);
         } else {
           if (currentWordIndex < words.length - 1) {
+            setCurrentWordClickedLetterIndices([]);
             setCurrentWordIndex((prev) => prev + 1);
+            setUserWord("");
+            setWordsLegend((prevWords) => [...prevWords, currentWord + " "]);
           } else {
             setPage("win");
           }
@@ -248,16 +259,41 @@ export function useWordsGame() {
     [currentWordIndex, userWord]
   );
 
+  const getCurrentWordClickedLetterIndices = (index) => {
+    setCurrentWordClickedLetterIndices((prev) => [...prev, index]);
+  };
+
+  const getResetLevel = useCallback(() => {
+    setUserWord("");
+    setCurrentWordClickedLetterIndices([]);
+  }, []);
+
   return {
     page,
-    currentWord,
+    words,
+    currentWord: currentWordRandomised,
     userWord,
+    wordsLegend,
+    currentWordClickedLetterIndices,
+    getCurrentWordClickedLetterIndices,
     addLetter,
+    getResetLevel,
   };
 }
 
 function splitWord(word) {
   return word.split("");
+}
+
+function randomizeWordLetters(word) {
+  const splittedWord = splitWord(word);
+  const rearrangedWord = [];
+  while (splittedWord.length > 0) {
+    const index = Math.floor(Math.random() * splittedWord.length);
+    const letter = splittedWord.splice(index, 1);
+    rearrangedWord.push(letter);
+  }
+  return rearrangedWord;
 }
 
 // const findDuplicatedWords = () => {
