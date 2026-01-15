@@ -1,6 +1,6 @@
 export function Letter() {
   return (
-    <section className="text">
+    <section className="text win">
       <h1>Luați aminte,</h1>
       <div>
         <p>Noi nu mai avem cer.</p>

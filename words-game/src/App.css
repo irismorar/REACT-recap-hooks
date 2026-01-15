@@ -6,7 +6,22 @@
 
 body {
   margin: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   font-size: 2rem;
+}
+
+.body-tutorial {
+  background-image: url("./photos/Lumivista1.jpeg");
+}
+
+.body-level {
+  background-image: url("./photos/Lumivista2.jpeg");
+}
+
+.body-win {
+  background-image: url("./photos/Lumivista3.jpeg");
 }
 
 .game-container {
@@ -17,11 +32,30 @@ body {
 }
 
 .text {
-  padding: 5rem 0;
-  margin: 0 auto;
-  width: clamp(40rem, 40%, 100rem);
+  width: clamp(40rem, 50%, 100rem);
+  height: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
   font-size: 2rem;
-  color: hsla(0, 0%, 100%, .4);
+  padding: 2rem 6rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: hsla(0, 0%, 100%, .2) transparent;
+}
+
+ .text.tutorial { 
+  color: hsla(0, 0%, 100%, 1);
+  background-color: hsla(0, 100%, 0%, .5);
+  box-shadow: 0 0 15px 25px hsla(0, 100%, 0%, .5);
+}
+
+.text.win {
+  color: hsla(0, 100%, 0%, 1);
+  background-color: hsla(0, 0%, 100%, .3);
+  box-shadow: 0 0 15px 25px hsla(0, 0%, 100%, .3);
 }
 
 .text > h1 {
@@ -29,7 +63,7 @@ body {
 }
 
  p {
-  text-indent: 50px;
+  text-indent: 55px;
   text-align: justify;
   margin: 0;
 }
@@ -44,8 +78,9 @@ span {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  margin-top: 5rem;
+  margin: 10rem 0 5rem 0;
   color: hsla(0, 87%, 22%, 1);
+
 }
 
 .tutorial-escape > span {
@@ -54,8 +89,10 @@ span {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: hsla(0, 0%, 100%, .3);
-  margin-right: .5rem
+  border: 2px solid hsla(0, 0%, 100%, .3);
+  margin-right: .5rem;
+  background-color: hsla(0, 0%, 100%, .4);
+  box-shadow: 0 0 35px 15px hsla(0, 0%, 100%, .3);
 }
 
 .game-board {
@@ -65,7 +102,6 @@ span {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 0 5rem;
 }
 
 .restart-button {
@@ -76,8 +112,8 @@ span {
   font-family: inherit;
   font-size: inherit;
   padding: .5rem 1rem;
-  border: 1px solid hsla(0, 0%, 100%, .3);
-  color: hsla(0, 0%, 100%, .3);
+  border: 1px solid hsla(0, 0%, 100%, 1);
+  color: hsla(0, 0%, 100%, 1);
 }
 
 .restart-button:active {
@@ -99,6 +135,7 @@ span {
   align-items: center;
   justify-content: center;
   gap: 4rem;
+  background-color: hsla(1, 100%, 0%, .3);
 }
 
 .word-button {
@@ -107,6 +144,7 @@ span {
   font-size: 7rem;
   text-transform: uppercase;
   font-family: inherit;
+  background-color: hsla(0, 100%, 0%, .6);
 }
 
 .word-button:hover {
@@ -121,23 +159,24 @@ span {
   font-size: 4rem;
   text-align: center;
   letter-spacing: 1.5rem;
-    text-transform: uppercase;
+  text-transform: uppercase;
   font-family: inherit;
 }
 
 .words-legend-container {
   width: clamp(40rem, 100%, 100%);
   font-size: 1.3rem;
-  position: fixed;
-  text-transform: uppercase;;
+  padding: 1.5rem 1rem;
   bottom: 5rem;
-  color: hsla(0, 0%, 100%, .4);
-  overflow-y: auto;
+  position: fixed;
+  color: hsla(0, 0%, 100%, 1);
+  text-transform: uppercase;
+  overflow-x: auto;
+  overflow-y: hidden;
   scrollbar-width: thin;
   scrollbar-color: #888 transparent;
-  padding: 0 1rem;
+  background-color: hsla(1, 100%, 0%, .3);
 }
-
 
 @media (max-width: 440px) {
 .word-buttons-container{

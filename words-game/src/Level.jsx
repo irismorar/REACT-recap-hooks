@@ -8,7 +8,7 @@ export function Level({
   getResetLevel,
 }) {
   return (
-    <section className="game-board">
+    <section className="game-board level">
       <button
         className="restart-button"
         onClick={() => {
@@ -30,7 +30,7 @@ export function Level({
               disabled={currentWordClickedLetterIndices.includes(index)}
               style={{
                 opacity: currentWordClickedLetterIndices.includes(index)
-                  ? ".2"
+                  ? ".3"
                   : "1",
               }}
             >

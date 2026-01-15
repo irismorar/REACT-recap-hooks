@@ -1,6 +1,6 @@
 export function Tutorial() {
   return (
-    <section className="text">
+    <section className="text tutorial">
       <h1>Grăbește-te!</h1>
       <div>
         <p>
@@ -9,9 +9,9 @@ export function Tutorial() {
           secole în urmă, Ultimii din Lumivista au transmis o scrisoare către
           Pământ, cu câteva clipe înainte ca planeta lor să fie transformată pe
           veci într-o închisoare a demonilor. Aceasta conține un mesaj capabil
-          să schimbe soarta lumii tale și să salveze Pamantul amenințat de o
-          putere malefică. Din nefericire, scrisoarea s-a pierdut pe drum și
-          doar cei vrednici pot reface conținutul ei. Așa că întreaga omenire se
+          să schimbe soarta Pământului și să îl salveze de puterea malefică ce
+          îl amenință. Din nefericire, scrisoarea s-a pierdut pe drum și doar
+          cei vrednici pot reface conținutul ei. Așa că întreaga omenire se
           bazează pe tine! Aici, fiecare simbol are putere, iar fiecare literă
           își caută locul firesc. Tu ești eroul, chemat să restabilească ordinea
           pierdută.
@@ -32,7 +32,7 @@ export function Tutorial() {
           Scopul tău este să rezolvi cât mai bine cele 170 de cuvinte, să
           acumulezi suficiente recompense și să ajungi, în cele din urmă, la
           scrisoarea completă. Doar un mesaj reconstruit cu înțelepciune va
-          putea dezvalui secretul care ține Pământul în viață. Soarta lumii stă
+          putea dezvălui secretul care ține Pământul în viață. Soarta lumii stă
           în mâinile tale! Folosește-ți mintea și viteza! Doar cei care
           stapânesc arta limbajului și curajul alegerilor vor ajunge la capătul
           acestei aventuri.{" "}

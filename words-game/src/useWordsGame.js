@@ -205,7 +205,7 @@ const words = [
 ];
 
 export function useWordsGame() {
-  const [page, setPage] = useState("play"); // tutorial | play | win
+  const [page, setPage] = useState("tutorial"); // tutorial | play | win
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [userWord, setUserWord] = useState("");
   const [wordsLegend, setWordsLegend] = useState([]);
@@ -234,6 +234,19 @@ export function useWordsGame() {
     };
   }, [handlePressEnter]);
 
+  useEffect(() => {
+    if (page === "tutorial") {
+      document.body.classList.add("body-tutorial");
+    }
+
+    if (page === "play") {
+      document.body.classList.add("body-level");
+    }
+    if (page === "win") {
+      document.body.classList.add("body-win");
+    }
+  }, [page]);
+
   const addLetter = useCallback(
     (letter) => {
       const currentWord = words[currentWordIndex];
@@ -242,8 +255,8 @@ export function useWordsGame() {
       } else {
         const userWordPlusLetter = userWord + letter;
         if (userWordPlusLetter !== currentWord) {
-          setUserWord("");
           setCurrentWordClickedLetterIndices([]);
+          setUserWord("");
         } else {
           if (currentWordIndex < words.length - 1) {
             setCurrentWordClickedLetterIndices([]);
