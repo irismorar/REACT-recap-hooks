@@ -3,28 +3,41 @@ export function Level({
   addLetter,
   userWord,
   wordsLegend,
+  totalCoins,
   currentWordClickedLetterIndices,
-  getCurrentWordClickedLetterIndices,
+  rememberClickedLetterIndex,
   getResetLevel,
+  showHint,
 }) {
   return (
     <section className="game-board level">
-      <button
-        className="restart-button"
-        onClick={() => {
-          getResetLevel();
-        }}
-      >
-        Try again
-      </button>
-      <div>
+      <section>
+        <button
+          className="restart-button"
+          onClick={() => {
+            getResetLevel();
+          }}
+        >
+          Reîncearcă
+        </button>
+        <button
+          className="hint-button"
+          onClick={() => {
+            showHint();
+          }}
+        >
+          Indiciu
+        </button>
+        <div className="coins">🪙{totalCoins}</div>
+      </section>
+      <section>
         <div className="word-buttons-container">
           {currentWord.map((letter, index) => (
             <button
               key={index}
               className="word-button"
               onClick={() => {
-                getCurrentWordClickedLetterIndices(index);
+                rememberClickedLetterIndex(index);
                 addLetter(letter);
               }}
               disabled={currentWordClickedLetterIndices.includes(index)}
@@ -39,7 +52,7 @@ export function Level({
           ))}
         </div>
         <div className="user-word-container">{userWord}</div>
-      </div>
+      </section>
       <div className="words-legend-container">
         <div>{wordsLegend}</div>
       </div>

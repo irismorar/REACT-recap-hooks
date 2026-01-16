@@ -11,9 +11,11 @@ export default function App() {
     userWord,
     wordsLegend,
     currentWordClickedLetterIndices,
-    getCurrentWordClickedLetterIndices,
+    totalCoins,
+    rememberClickedLetterIndex,
     addLetter,
     getResetLevel,
+    showHint,
   } = useWordsGame();
   return (
     <section className="game-container">
@@ -25,10 +27,10 @@ export default function App() {
           userWord={userWord}
           wordsLegend={wordsLegend}
           currentWordClickedLetterIndices={currentWordClickedLetterIndices}
-          getCurrentWordClickedLetterIndices={
-            getCurrentWordClickedLetterIndices
-          }
+          rememberClickedLetterIndex={rememberClickedLetterIndex}
           getResetLevel={getResetLevel}
+          showHint={showHint}
+          totalCoins={totalCoins}
         />
       )}
       {page === "win" && <Letter />}

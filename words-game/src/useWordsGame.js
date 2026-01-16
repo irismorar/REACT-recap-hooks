@@ -212,6 +212,8 @@ export function useWordsGame() {
   const [currentWordRandomised, setCurrentWordRandomised] = useState([]);
   const [currentWordClickedLetterIndices, setCurrentWordClickedLetterIndices] =
     useState([]);
+  const [totalCoins, setTotalCoins] = useState(0);
+  const [currentWordCoinsReward, setCurrentWordCoinsReward] = useState(0); // currentWord.length | currentWord.length - hint.length
 
   useEffect(() => {
     setCurrentWordRandomised(randomizeWordLetters(words[currentWordIndex]));
@@ -220,10 +222,11 @@ export function useWordsGame() {
   const handlePressEnter = useCallback(
     (event) => {
       if (page === "tutorial" && event.key === "Enter") {
+        setCurrentWordCoinsReward(words[currentWordIndex].length);
         setPage("play");
       }
     },
-    [page]
+    [page, currentWordIndex]
   );
 
   useEffect(() => {
@@ -263,16 +266,19 @@ export function useWordsGame() {
             setCurrentWordIndex((prev) => prev + 1);
             setUserWord("");
             setWordsLegend((prevWords) => [...prevWords, currentWord + " "]);
+            setCurrentWordCoinsReward(words[currentWordIndex + 1].length);
+            setTotalCoins((prev) => prev + currentWordCoinsReward);
           } else {
+            setTotalCoins((prev) => prev + currentWordCoinsReward);
             setPage("win");
           }
         }
       }
     },
-    [currentWordIndex, userWord]
+    [currentWordIndex, userWord, currentWordCoinsReward]
   );
 
-  const getCurrentWordClickedLetterIndices = (index) => {
+  const rememberClickedLetterIndex = (index) => {
     setCurrentWordClickedLetterIndices((prev) => [...prev, index]);
   };
 
@@ -281,6 +287,37 @@ export function useWordsGame() {
     setCurrentWordClickedLetterIndices([]);
   }, []);
 
+  const showHint = useCallback(() => {
+    const currentWord = words[currentWordIndex];
+    const hint = getFirstHalfLetters(currentWord);
+    setUserWord(hint);
+    setCurrentWordCoinsReward(currentWord.length - hint.length);
+    const hintLetterIndices = [];
+    const splitHint = hint.split("");
+    const hintLetterIndicesDictionary = {};
+    const seenLetters = [];
+    splitHint.forEach((hintLetter) => {
+      if (seenLetters.includes(hintLetter)) {
+        return;
+      }
+      currentWordRandomised.forEach((randomisedLetter, index) => {
+        if (hintLetter !== randomisedLetter) {
+          return;
+        }
+        if (!hintLetterIndicesDictionary[hintLetter]) {
+          hintLetterIndicesDictionary[hintLetter] = [index];
+        } else {
+          hintLetterIndicesDictionary[hintLetter].push(index);
+        }
+      });
+      seenLetters.push(hintLetter);
+    });
+    for (const hintLetter of splitHint) {
+      hintLetterIndices.push(hintLetterIndicesDictionary[hintLetter].shift());
+    }
+    setCurrentWordClickedLetterIndices(hintLetterIndices);
+  }, [currentWordIndex, currentWordRandomised]);
+
   return {
     page,
     words,
@@ -288,9 +325,11 @@ export function useWordsGame() {
     userWord,
     wordsLegend,
     currentWordClickedLetterIndices,
-    getCurrentWordClickedLetterIndices,
+    totalCoins,
+    rememberClickedLetterIndex,
     addLetter,
     getResetLevel,
+    showHint,
   };
 }
 
@@ -303,10 +342,15 @@ function randomizeWordLetters(word) {
   const rearrangedWord = [];
   while (splittedWord.length > 0) {
     const index = Math.floor(Math.random() * splittedWord.length);
-    const letter = splittedWord.splice(index, 1);
+    const letter = splittedWord.splice(index, 1).join("");
     rearrangedWord.push(letter);
   }
   return rearrangedWord;
+}
+
+function getFirstHalfLetters(currentWord) {
+  const halfIndex = Math.ceil(currentWord.length / 2);
+  return currentWord.slice(0, halfIndex);
 }
 
 // const findDuplicatedWords = () => {
