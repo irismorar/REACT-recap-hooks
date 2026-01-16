@@ -15,7 +15,7 @@ export function Letter() {
           Lumina, râsetele și frumusețea caracterizau atât locuitorii cât și
           meleagurile noastre deluroase. Câmpiile albastre, aerul dulceag
           parfumat și cerul pictat în ape verzi făceau din Lumivista un loc de
-          neuitat și în același timp multdorit. Tocmai de aceea ne-am ținut
+          neuitat și în același timp mult dorit. Tocmai de aceea ne-am ținut
           lumea ascunsă de ochii tuturor celorlalte galaxii. Noi știam de voi și
           de lumile voastre mici și uscate, în timp ce voi n-aveați nici cel mai
           mic indiciu despre cum poate arăta o planetă perfectă, ca a noastră.
@@ -29,11 +29,11 @@ export function Letter() {
           invazii sau cotropiri, însă niciodată nu ne-am gândit că răul era
           printre noi... sau chiar în noi. S-a adus amenințarea fără să se
           ridice arme, doar idei. Sub masca libertății, s-a semănat anarhie, iar
-          din primele fisuri s-a născut corupția conștiințelor. Rapid a venit
-          sfârșitul, iar degradarea a prefăcut câmpiile în dezolare. Din poporul
-          unit care eram odată, cu oameni blânzi și primitori, ne-am transformat
-          peste noapte în creaturi malefice, îngrozitoare și demne de mila
-          iadului. Discordia ne-a întors unii împotriva altora, iar
+          din primele fisuri s-a născut finalul civilizației noastre. Rapid a
+          venit sfârșitul, iar degradarea a prefăcut câmpiile în dezolare. Din
+          poporul unit care eram odată, cu oameni blânzi și primitori, ne-am
+          transformat peste noapte în creaturi malefice, îngrozitoare și demne
+          de mila iadului. Discordia ne-a întors unii împotriva altora, iar
           demonstrațiile urii au fost aplaudate ca adevăr. Echilibrul s-a
           pierdut când egoismul a fost numit virtute, iar enigma răului nu a mai
           fost întrebată. Prin orbire, minciuna a devenit lege. Slăbirea
@@ -68,7 +68,7 @@ export function Letter() {
           orei de căpătâi toți vom vi ajunși demoni. Cu ultima suflare bună pe
           care încă o avem în sânge vă avertizăm că Ploaia Neagră se îndreaptă
           spre Pământ cu viteza gândului, vrând să vă înghită de tot, pe toți.
-          Ne-a fost permis să scriem această scrisoare doar pentru că răul e
+          Ne-a fost permis să scriem această scrisoare doar pentru că Răul e
           sigur de victorie.
         </p>
         <p>
@@ -85,7 +85,7 @@ export function Letter() {
           tulburarea va fi întâmpinată cu umanitatea voastră, dacă veți întări
           rezistența în fața urii, atunci Ploaia Neagră nu vă va uda. Mantia
           Albă va îmbrăca toate colțurile lumii voastre, protejându-vă. Alegeți
-          unitatea, nu separarea. Alegeți empatia, nu jignirea. Alegeți să
+          unitatea, nu separarea. Alegeți empatia, nu indiferența. Alegeți să
           vedeți demonii înainte să îi primiți. Aceasta nu este o profeție, este
           o avertizare. Noi am căzut, însă voi puteți rămâne în picioare.
           Apocalipsa nu este un destin, este o alegere care vă aparține.

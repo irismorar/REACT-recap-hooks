@@ -22,29 +22,25 @@ export function Tutorial() {
           este să le așezi în ordinea corectă, descifrând cuvântul ascuns în
           haos. Fiecare cuvânt rezolvat corect readuce la viață o parte din
           scrisoare și îți va aduce recompense necesare pentru a continua
-          călătoria. Dar fi prevăzător: timpul este un dușman nevăzut! Clepsidra
-          Destinului se golește necruțător, iar fiecare secundă pierdută te
-          poate îndepărta de adevăr. Dacă nu reușești să rezolvi un cuvânt la
-          timp, Gardienii Timpului îți vor oferi timp suplimentar însă cu un
-          preț, iar recompensele acumulate vor fi sacrificate.
+          călătoria. Dar fi prevăzător: graba este un dușman nevăzut iar fiecare
+          secundă pierdută te poate îndepărta de adevăr.
         </p>
         <p>
           Scopul tău este să rezolvi cât mai bine cele 170 de cuvinte, să
           acumulezi suficiente recompense și să ajungi, în cele din urmă, la
           scrisoarea completă. Doar un mesaj reconstruit cu înțelepciune va
           putea dezvălui secretul care ține Pământul în viață. Soarta lumii stă
-          în mâinile tale! Folosește-ți mintea și viteza! Doar cei care
+          în mâinile tale! Folosește-ți mintea și dibăcia! Doar cei care
           stapânesc arta limbajului și curajul alegerilor vor ajunge la capătul
           acestei aventuri.{" "}
         </p>
-        <p>Tărâmul te așteaptă. Literele s-au trezit. Clepsidra a pornit. </p>
-        <p>Povestea începe acum!</p>
+        <p>Tărâmul te așteaptă. Literele s-au trezit. Povestea începe acum!</p>
         <div className="tutorial-escape">
           <span>R</span>
           <span>E</span>
           <span>T</span>
-          <span>E</span>
           <span>N</span>
+          <span>E</span>
         </div>
       </div>
     </section>
