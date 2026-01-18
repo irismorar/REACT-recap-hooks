@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-const words = [
+export const words = [
   "cer",
   "ură",
   "orb",
@@ -226,7 +226,7 @@ export function useWordsGame() {
         setPage("play");
       }
     },
-    [page, currentWordIndex]
+    [page, currentWordIndex],
   );
 
   useEffect(() => {
@@ -275,7 +275,7 @@ export function useWordsGame() {
         }
       }
     },
-    [currentWordIndex, userWord, currentWordCoinsReward]
+    [currentWordIndex, userWord, currentWordCoinsReward],
   );
 
   const rememberClickedLetterIndex = (index) => {
@@ -292,6 +292,7 @@ export function useWordsGame() {
     const hint = getFirstHalfLetters(currentWord);
     setUserWord(hint);
     setCurrentWordCoinsReward(currentWord.length - hint.length);
+
     const hintLetterIndices = [];
     const splitHint = hint.split("");
     const hintLetterIndicesDictionary = {};
@@ -315,6 +316,7 @@ export function useWordsGame() {
     for (const hintLetter of splitHint) {
       hintLetterIndices.push(hintLetterIndicesDictionary[hintLetter].shift());
     }
+
     setCurrentWordClickedLetterIndices(hintLetterIndices);
   }, [currentWordIndex, currentWordRandomised]);
 
