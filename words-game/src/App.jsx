@@ -12,6 +12,7 @@ export default function App() {
     wordsLegend,
     currentWordClickedLetterIndices,
     totalCoins,
+    playGame,
     rememberClickedLetterIndex,
     addLetter,
     getResetLevel,
@@ -19,7 +20,7 @@ export default function App() {
   } = useWordsGame();
   return (
     <section className="game-container">
-      {page === "tutorial" && <Tutorial />}
+      {page === "tutorial" && <Tutorial playGame={playGame} />}
       {page === "play" && (
         <Level
           currentWord={currentWord}

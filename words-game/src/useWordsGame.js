@@ -206,7 +206,7 @@ export const words = [
 
 export function useWordsGame() {
   const [page, setPage] = useState("tutorial"); // tutorial | play | win
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [currentWordIndex, setCurrentWordIndex] = useState(160);
   const [userWord, setUserWord] = useState("");
   const [wordsLegend, setWordsLegend] = useState([]);
   const [currentWordRandomised, setCurrentWordRandomised] = useState([]);
@@ -218,24 +218,6 @@ export function useWordsGame() {
   useEffect(() => {
     setCurrentWordRandomised(randomizeWordLetters(words[currentWordIndex]));
   }, [currentWordIndex]);
-
-  const handlePressEnter = useCallback(
-    (event) => {
-      if (page === "tutorial" && event.key === "Enter") {
-        setCurrentWordCoinsReward(words[currentWordIndex].length);
-        setPage("play");
-      }
-    },
-    [page, currentWordIndex],
-  );
-
-  useEffect(() => {
-    document.addEventListener("keyup", handlePressEnter);
-
-    return () => {
-      document.removeEventListener("keyup", handlePressEnter);
-    };
-  }, [handlePressEnter]);
 
   useEffect(() => {
     if (page === "tutorial") {
@@ -249,6 +231,13 @@ export function useWordsGame() {
       document.body.classList.add("body-win");
     }
   }, [page]);
+
+  const playGame = useCallback(() => {
+    if (page === "tutorial") {
+      setCurrentWordCoinsReward(words[currentWordIndex].length);
+      setPage("play");
+    }
+  }, [page, currentWordIndex]);
 
   const addLetter = useCallback(
     (letter) => {
@@ -322,12 +311,12 @@ export function useWordsGame() {
 
   return {
     page,
-    words,
     currentWord: currentWordRandomised,
     userWord,
     wordsLegend,
     currentWordClickedLetterIndices,
     totalCoins,
+    playGame,
     rememberClickedLetterIndex,
     addLetter,
     getResetLevel,

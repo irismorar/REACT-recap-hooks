@@ -1,4 +1,4 @@
-export function Tutorial() {
+export function Tutorial({ playGame }) {
   return (
     <section className="text tutorial">
       <h1>Grăbește-te!</h1>
@@ -35,14 +35,15 @@ export function Tutorial() {
           acestei aventuri.{" "}
         </p>
         <p>Tărâmul te așteaptă. Literele s-au trezit. Povestea începe acum!</p>
-        <div className="tutorial-escape">
-          <span>R</span>
-          <span>E</span>
-          <span>T</span>
-          <span>N</span>
-          <span>E</span>
-        </div>
       </div>
+      <button
+        className="play-game-button"
+        onClick={() => {
+          playGame();
+        }}
+      >
+        YALP
+      </button>
     </section>
   );
 }
