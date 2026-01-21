@@ -12,6 +12,7 @@ export default function App() {
     wordsLegend,
     currentWordClickedLetterIndices,
     totalCoins,
+    currentWordIndex,
     playGame,
     rememberClickedLetterIndex,
     addLetter,
@@ -32,6 +33,7 @@ export default function App() {
           getResetLevel={getResetLevel}
           showHint={showHint}
           totalCoins={totalCoins}
+          currentWordIndex={currentWordIndex}
         />
       )}
       {page === "win" && <Letter />}

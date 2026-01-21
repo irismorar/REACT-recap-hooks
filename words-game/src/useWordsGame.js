@@ -7,7 +7,6 @@ export const words = [
   "văl",
   "ars",
   "mic",
-  "rău",
   "trăi",
   "oraș",
   "timp",
@@ -151,14 +150,11 @@ export const words = [
   "grozăvie",
   "judecată",
   "labirint",
-  // "asuprire",
   "deschide",
   "seducție",
-  // "supunere",
   "profeție",
   "aplaudat",
   "locuitor",
-  // "corupție",
   "victorie",
   "separare",
   "lipicios",
@@ -168,45 +164,18 @@ export const words = [
   "guvernare",
   "schimbare",
   "claritate",
-  // "permanent",
   "echilibru",
   "dezbinare",
   "pământean",
   "scrisoare",
   "războinic",
   "libertate",
-  // "degradare",
-  // "discordie",
-  // "tulburare",
-  // "umanitate",
-  // "niciodată",
-  // "frumusețe",
-  // "promisiune",
-  // "compasiune",
-  // "conștiință",
-  // "impuritate",
-  // "infiltrare",
-  // "apocalipsă",
-  // "rezistență",
-  // "avertizare",
-  // "sacrificiu",
-  // "frământare",
-  // "identitate",
-  // "manipulare",
-  // "justificat",
-  // "amenințare",
-  // "neglijență",
-  // "perversiune",
-  // "caracteriza",
-  // "transformat",
-  // "halucinație",
-  // "transformare",
-  // "binecuvântare",
+  "apocalipsă",
 ];
 
 export function useWordsGame() {
   const [page, setPage] = useState("tutorial"); // tutorial | play | win
-  const [currentWordIndex, setCurrentWordIndex] = useState(160);
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [userWord, setUserWord] = useState("");
   const [wordsLegend, setWordsLegend] = useState([]);
   const [currentWordRandomised, setCurrentWordRandomised] = useState([]);
@@ -316,6 +285,7 @@ export function useWordsGame() {
     wordsLegend,
     currentWordClickedLetterIndices,
     totalCoins,
+    currentWordIndex,
     playGame,
     rememberClickedLetterIndex,
     addLetter,
@@ -343,15 +313,3 @@ function getFirstHalfLetters(currentWord) {
   const halfIndex = Math.ceil(currentWord.length / 2);
   return currentWord.slice(0, halfIndex);
 }
-
-// const findDuplicatedWords = () => {
-//   const duplicatedWords = [];
-//   for (let i = 0; i < words.length - 2; i++) {
-//     for (let j = i + 1; j < words.length - 1; j++) {
-//       if (words[i] === words[j]) {
-//         duplicatedWords.push(words[i]);
-//       }
-//     }
-//   }
-//   return duplicatedWords;
-// };

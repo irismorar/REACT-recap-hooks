@@ -34,7 +34,7 @@ body {
 }
 
 .text {
-  width: clamp(40rem, 50%, 100rem);
+  width: clamp(40rem, 55%, 100rem);
   height: 80%;
   position: absolute;
   top: 50%;
@@ -130,10 +130,14 @@ span {
   top: 10rem;
 }
 
-.coins {
+.current-level-data {
   position: absolute;
   left: 5rem;
   top: 15rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .game-board > section:nth-child(2) {
@@ -182,11 +186,12 @@ span {
 .words-legend-container {
   width: clamp(40rem, 100%, 100%);
   font-size: 1.3rem;
-  padding: 1.5rem 1rem;
+  padding: .3rem 1rem;
   bottom: 5rem;
   position: fixed;
   color: hsla(0, 0%, 100%, 1);
   text-transform: uppercase;
+  text-align: justify;
   background-color: hsla(1, 100%, 0%, 0.3);
 }
 
@@ -197,7 +202,7 @@ span {
   }
 
   .text {
-    width: 90%;
+    width: 55%;
     padding: 2rem 3rem;
     gap: 2rem;
   }
@@ -222,7 +227,7 @@ span {
     font-size: 1rem;
   }
 
-  .coins {
+  .current-level-data {
     top: 8rem;
     font-size: 1rem;
   }
@@ -238,21 +243,24 @@ span {
     letter-spacing: 1rem;
   }
 
-  .words-legend-container {
-    font-size: 1rem;
-    padding: 1rem;
+  .words-legend-container{
     bottom: 2rem;
+  }
+
+  .words-legend-container > div {
+    font-size: 1rem;
+    text-align: justify;
   }
 }
 
 /*MOBILE (PHONES)*/
-@media (max-width: 768px) {
+@media (max-width: 745px) {
   body {
     font-size: 1.4rem;
   }
 
   .text {
-    width: 95%;
+    width: 50%;
     height: 85%;
     padding: 1.5rem;
   }
@@ -284,7 +292,7 @@ span {
     top: 4.5rem;
   }
 
-  .coins {
+  .current-level-data {
     top: 8rem;
     font-size: 1.4rem;
   }
@@ -306,10 +314,13 @@ span {
     letter-spacing: 0.6rem;
   }
 
-  .words-legend-container {
-    font-size: 1rem;
-    padding: 1rem;
+  .words-legend-container{
     bottom: 2rem;
+  }
+  
+  .words-legend-container > div{
+    font-size: .7rem;
+    text-align: justify;
   }
 }
 
@@ -325,6 +336,12 @@ span {
 
   p {
     font-size: 1.1rem;
+  }
+
+  .text {
+    width: 75%;
+    height: 85%;
+    padding: 1.5rem;
   }
 
   .word-button {

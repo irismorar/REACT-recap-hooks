@@ -4,6 +4,7 @@ export function Level({
   userWord,
   wordsLegend,
   totalCoins,
+  currentWordIndex,
   currentWordClickedLetterIndices,
   rememberClickedLetterIndex,
   getResetLevel,
@@ -28,7 +29,10 @@ export function Level({
         >
           Indiciu
         </button>
-        <div className="coins">🪙{totalCoins}</div>
+        <section className="current-level-data">
+          <div>📜{currentWordIndex + 1}</div>
+          <div>🪙{totalCoins}</div>
+        </section>
       </section>
       <section>
         <div className="word-buttons-container">
